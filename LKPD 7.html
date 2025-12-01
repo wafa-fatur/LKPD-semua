@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>LKPD 7</title>
+</head>
+<body>
+  !-- Paragraf -->
+<p id="teks">Ini paragrafnya.</p>
+
+<!-- Tombol -->
+<button id="btn">Sembunyikan</button>
+
+<br><br>
+
+<!-- Input -->
+<input id="inputText" type="text">
+
+<!-- Output -->
+<p id="output"></p>
+
+<script>
+// Tombol sembunyikan
+document.getElementById("btn").onclick = function() {
+  document.getElementById("teks").style.display = "none"; // sembunyikan paragraf
+};
+
+// Input live
+document.getElementById("inputText").oninput = function() {
+  document.getElementById("output").innerHTML = this.value; // tampilkan live
+};
+  //maaf pak pake ai
+</script>
+
+</body>
+</html>
