@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>LKPD 6</title>
+</head>
+<body>
+ 
+
+<p id="teks">menyala.</p>
+<button onclick="ubahWarna()">Ubah Warna</button>
+ 
+
+<br><br>
+
+<div id="wadah"></div>
+<button onclick="tambahElemen()">Tambah Elemen</button>
+
+<script>
+function ubahWarna() {
+  document.getElementById("teks").style.color = "blue";
+}
+  function ubahWarna() {
+  document.getElementById("teks").style.color = "blue";
+}
+
+function tambahElemen() {
+  let baru = document.createElement("p");
+  baru.textContent = "Elemen baru ditambahkan";
+  document.getElementById("wadah").appendChild(baru);
+}
+  // document.getElementById() = untuk mengambil elemen berdasarkan id
+
+// Cara menambah elemen baru:
+// 1. buat elemen: let p = document.createElement("p");
+// 2. isi teks: p.textContent = "teks";
+// 3. tempel ke halaman: document.body.appendChild(p);
+</script>
+
+</body>
+</html>
+</body>
+</html>
