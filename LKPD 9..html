@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LKPD 9</title>
+</head>
+<body>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <input type="number" id="angka1" placeholder="Angka pertama">
+  <input type="number" id="angka2" placeholder="Angka kedua">
+  <br><br>
+
+  <button onclick="tambah()">+</button>
+  <button onclick="kurang()">-</button>
+  <button onclick="kali()">×</button>
+  <button onclick="bagi()">÷</button>
+
+  <h3>Hasil: <span id="hasil">0</span></h3>
+
+  <script>
+    function tambah() {
+      let a = Number(document.getElementById("angka1").value);
+      let b = Number(document.getElementById("angka2").value);
+      document.getElementById("hasil").innerText = a + b;
+    }
+
+    function kurang() {
+      let a = Number(document.getElementById("angka1").value);
+      let b = Number(document.getElementById("angka2").value);
+      document.getElementById("hasil").innerText = a - b;
+    }
+
+    function kali() {
+      let a = Number(document.getElementById("angka1").value);
+      let b = Number(document.getElementById("angka2").value);
+      document.getElementById("hasil").innerText = a * b;
+    }
+
+    function bagi() {
+      let a = Number(document.getElementById("angka1").value);
+      let b = Number(document.getElementById("angka2").value);
+      if (b === 0) {
+        document.getElementById("hasil").innerText = "gak bisa di bagi sama bilangan 0";
+      } else {
+        document.getElementById("hasil").innerText = a / b;
+      }
+    }
+  
+  //tantangan terbesar paling lkpd 8
+  //kayannya nggak 
+  </script>
+</body>
+
+
+</html>
