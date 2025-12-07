@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>LKPD 8</title>
+</head>
+<body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Form Registrasi — Validasi Password</title>
+  
+</head>
+<body>
+  <h1>Contoh Validasi Password (min 8 karakter)</h1>
+
+  <form id="registerForm" novalidate>
+    <div class="field">
+      <label for="password">Password</label><br />
+      <input id="password" name="password" type="password" autocomplete="new-password" aria-describedby="pwdHint pwdFeedback" minlength="8" />
+      <div id="pwdHint" class="hint">Minimal 8 karakter.</div>
+      <div id="pwdFeedback" class="feedback" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="field">
+      <button id="submitBtn" type="submit" disabled>Daftar</button>
+    </div>
+
+    <div id="formMessage" class="feedback" aria-live="polite"></div>
+  </form>
+
+  <script>
+    // Elemen
+    const password = document.getElementById('password');
+    const feedback = document.getElementById('pwdFeedback');
+    const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('registerForm');
+    const formMessage = document.getElementById('formMessage');
+
+    // Validasi langsung saat user mengetik
+    function validatePassword() {
+      const val = password.value || '';
+
+      // Kosongkan pesan jika input kosong
+      if (val.length === 0) {
+        feedback.innerHTML = ''; // gunakan innerHTML sesuai permintaan
+        feedback.className = 'feedback';
+        submitBtn.disabled = true;
+        return false;
+      }
+
+      if (val.length < 8) {
+        feedback.innerHTML = 'Password terlalu pendek — minimal 8 karakter.';
+        feedback.className = 'feedback error';
+        submitBtn.disabled = true;
+        return false;
+      }
+
+      // Kalau lolos panjang minimal
+      feedback.innerHTML = 'Password memenuhi panjang minimal.';
+      feedback.className = 'feedback ok';
+      submitBtn.disabled = false;
+      return true;
+    }
+
+    // Pasang event listener untuk umpan balik langsung
+    password.addEventListener('input', () => {
+      validatePassword();
+      // Hapus pesan form (jika ada) saat user mengubah input
+      formMessage.innerHTML = '';
+      formMessage.className = 'feedback';
+    });
+
+    // Tangani submit — contoh: cegah reload dan tampilkan pesan di halaman
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const ok = validatePassword();
+      if (!ok) {
+        formMessage.innerHTML = 'Periksa kembali form sebelum mengirim.';
+        formMessage.className = 'feedback error';
+        return;
+      }
+
+      // Simulasi sukses — tampilkan pesan di halaman (bukan alert)
+      formMessage.innerHTML = 'Pendaftaran berhasil (simulasi).';
+      formMessage.className = 'feedback ok';
+
+      // Di aplikasi nyata, di sini Anda bisa mengirim form lewat fetch/XHR.
+    });
+
+    // Inisialisasi (jika halaman dimuat dengan nilai yang sudah ada)
+    validatePassword();
+// - Biar data yang dikirim benar.
+// - Biar server tidak ikut proses data yang salah.
+
+// Risiko kalau tidak divalidasi:
+// - Data kacau masuk server.
+// - Bisa jadi celah keamanan.
+// - Server bisa error.
+  
+  </script>
+</body>
+</html>
